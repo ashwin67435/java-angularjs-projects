@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html  ng-app="flightapp1" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+    <title>Flight Booking details</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+    <h1>Flight Booking Details :</h1>
+    <div class="flight-details">
+        <div class="flight-route">
+            {{flightObj.source | capitalize}} to {{flightObj.destination | capitalize}}
+        </div>
+        <div class="flight-date">
+            {{flightObj.departureTime | date}} * {{flightObj.duration | convertToHr}}
+        </div>
+        <div class="flight-name-1">
+            <hr style="border-top:1px dashed black">
+            <p>{{flightObj.flightName}} {{flightObj.flightNumber}} * {{queryObj.class}} * comfortable</p>
+            <hr style="border-top:1px dashed black">
+        </div>
+        <div class="flight-time">
+            <div class="departure">
+                <p>{{flightObj.source | capitalize}} {{flightObj.departureTime | time}}</p>
+                <p>{{flightObj.departureTime | date}}</p>
+            </div>
+            <div class="image">
+                <p class="small">{{flightObj.duration | convertToHr}}</p>
+                <img src="https://cdn3.iconfinder.com/data/icons/business-and-commercial-set-25/512/left_rightarrow2-512.png" height="70px">
+            </div>
+            <div class="arrival">
+                <p>{{flightObj.destination | capitalize}} {{flightObj.departureTime | arrivalTime:flightObj.duration}}</p>
+                <p>{{flightObj.departureTime | arrivalDate:flightObj.duration}}</p>
+            </div>
+            <hr style="border-top:1px dashed black">
+        </div>
+        <div class="facility">
+            <div class="food">
+               <span ng-if="flightObj.mealAvailable == true">meals Available</span>
+               <span ng-if="flightObj.mealAvailable != true">meals not Available</span>
+            </div>
+            <div class="entertain">
+                Wifi Available
+            </div>
+            <hr style="border-top:1px dashed black">
+        </div>
+    </div>
+
+    <div class="travllers-details">
+        <h2>Enter Travellers details:</h2>
+        <h4>Adults</h4>
+		<div class="adults" ng-repeat="n in [] | range:queryObj.adults">
+			<span>{{$index+1}}. <label>Name :</label> <input type="text" ng-model="passName"><label>Age :</label> <input type="text" ng-model="passAge"> <button ng-click="addPass(passName,passAge)">Add</button>  <button ng-click="deletePass($index)">delete</button> </span><br><br>
+		</div>
+		
+		<h4 ng-if="queryObj.child>0">Children</h4>
+		<div class="childrens" ng-repeat="n in [] | range:queryObj.child">
+			<span>{{$index+1}}. <label>Name :</label> <input type="text" ng-model="passName"> <label>Age :</label> <input type="text" ng-model="passAge"> <button ng-click="addPass(passName,passAge)">Add</button>  <button ng-click="deletePass($index)">delete</button> </span><br><br>
+		</div>
+		
+		<button ng-click="submitPassengers()">submit</button>
+    </div>
+    
+    <div class="passenger-details" ng-show="showpass">
+    	<h2>Passenger Details :</h2>
+    	
+    	<div class="passengers">
+	    	<div ng-repeat="passenger in passengers">
+	    		<p>Name : {{passenger.name}}</p>
+	    		<p>age : {{passenger.age}}</p>
+	    	</div>
+	    
+    	</div>
+    	
+    	<div class="total-cost">
+    	<h2>Fare Summary : </h2>
+    	<p>Amount payable : {{flightObj.price * (queryObj.adults+queryObj.child)}} Rs</p>
+    	</div>
+    	<div style="float:right;padding-right:30px">
+    	<p>Source: {{flightObj.source | capitalize}}</p>
+	    <p>Destination : {{flightObj.destination | capitalize}}</p>
+    	</div>
+    </div>
+	<div class="payment" ng-show="showpass">
+		<button ng-click="payment()">Pay securely</button>
+	</div>    
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Booked Tickets</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+</head>
+<body>
+	<div class="histories">
+	<h2>Booked Tickets:</h2>
+		<div class="element" ng-repeat="history in histories">
+		<h3>Flight details:</h3>
+		<div style="display:inline-block" class="flightDetails">
+			<p>FlightName : {{history.flightName}}</p>
+			<p>FlightNumber : {{history.flightNumber}}</p>
+			<p>Departure : {{history.departureTime}}</p> <span>({{history.source}} <=> {{history.destination}})</span>
+			<p>Business : {{history.category}}</p> <span>Fare :{{history.fare}} Rs</span>
+			<h3>Ticket Status:</h3>
+			<h3 ng-if="history.canceled==false">Active</h3>
+			<h3 ng-if="history.canceled==true">Cancelled</h3>
+		</div>
+		<div style="float:right; padding-right:50px" class="passenger">
+			<h3>Passengers Names:</h3>
+			<p ng-repeat="pass in history.passenger">{{$index+1}}. {{pass.name}}</p> 
+		</div>
+		
+		<div style="padding-top:10px">
+			<button ng-click="cancelTicket(history)" ng-disabled="history.canceled">Cancel Ticket</button>
+		</div>
+		<hr>
+		</div>
+	</div>
+</body>
+</html>

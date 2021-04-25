@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Payment</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+<link rel="stylesheet" href="payment.css">
+
+</head>
+<body>
+	<div class="payment-page">
+		<div class="pay-title">
+			<h1>Payment SuccessFull</h1>
+		</div>
+		<div class="details">
+			<h1>Booking Details:</h1>
+				<p>Flight Name : {{ticketDetails.flightName}}</p>
+				<p>Flight Number : {{ticketDetails.flightNumber}}</p>
+				<p>Departure Date : {{ticketDetails.departure | date}}</p>
+				<p>Fare : {{ticketDetails.fare}}</p>
+				<p>Class : {{ticketDetails.class}}</p>
+				<p>Source : {{ticketDetails.source}}</p>
+				<p>Destination : {{ticketDetails.destination}}</p>
+		</div>
+		
+		<div class="booking-state">
+			<h2>Ticket State :</h2>
+			<h3 ng-if="ticketDetails.isCancel==false">Active</h3>
+			<h3 ng-if="ticketDetails.isCancel==true">Cancelled</h3>
+		</div>
+		
+		<div class="cancel">
+			<button ng-click="cancelBooking(ticketDetails)" ng-disabled="ticketDetails.isCancel">Cancel Booking</button>
+		</div>
+	
+		
+			
+	</div>
+</body>
+</html>

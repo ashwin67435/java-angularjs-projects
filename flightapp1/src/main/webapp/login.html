@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="flightapp1">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="app.js"></script>
+
+</head>
+<body>	
+	<section>
+        <div class="container">
+            <h1>Login</h1>
+			
+            <form action="login" name="userLogin" method="post">
+                <span>UserName:</span> <input type="text" name="uName" ng-model="uName" required><br>
+              	<p ng-if="userLogin.uName.$error.required && userLogin.uName.$dirty">Username is required</p>
+                <span>Password:</span> <input type="password" name="uPass" ng-model="uPass" ng-minLength="8" required><br>
+                <p ng-if="userLogin.uPass.$invalid && userLogin.uPass.$dirty">Please Enter at least 8 characters</p>
+                <button ng-disabled="userLogin.uName.$dirty && userLogin.uName.$invalid || userLogin.uPass.$invalid" type="submit">Login</button>
+            </form>
+
+            <p>Not a User ? <a href="register.html">Signup now</a></p>
+        </div>
+    </section>
+	
+</body>
+</html>

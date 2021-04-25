@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.histories{
+	box-shadow:0 0 5px rgb(0 0 0 / 15%);
+	height:100%;
+	width:100%;
+	
+}
+
+.flightDetails{
+	display:inline-block;
+}
+
+.passenger{
+	float:left;
+}

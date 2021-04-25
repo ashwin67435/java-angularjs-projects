@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+.prices{
+	display:inline-block;
+}
+
+.#link {
+	    background-color: #d6d6d6;
+    color: #0e0d0d;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.departureTime{
+	padding-left:20px;
+	display:inline-block;
+}
+
+
+.Airlines{
+	padding-left:20px;
+	display:inline-block;
+}
+
+.title{
+	text-align:center;
+}
+
+.history{
+	text-align:right;
+}
+
+.flights{
+	text-align:center;
+	margin-left:10px;
+}
+
+
+.flightContainer {
+	box-shadow:0 0 5px rgb(0 0 0 / 15%);
+	height:170px;
+	width:90%;
+	margin:20px 10px;
+	padding:10px;
+	text-align:center;
+}
+.form-container{
+	text-align:center;
+}
+
+.flight-name{
+	display:inline-block;
+	padding-right:100px;
+	text-align:left;
+}
+.route-source {
+	display:inline-block;
+	padding-right:100px;
+	text-align:left;
+}
+
+.route-destination{
+	display:inline-block;
+	padding-right:100px;
+	text-align:left;
+}
+.image{
+	display:inline-block;
+	padding-right:50px;
+	text-align:left;
+}
+
+.small{
+	font-size:13px;
+}
+
+.fare p{
+	display:"inline-block";
+	float:right;
+	margin:5px;
+}
+
+.book-button{
+	padding-left:270px;
+	text-align:center;
+}
+
+.book-button button{
+	padding:5px;	
+}
+
+.filters{
+	margin-top:10px;
+	box-shadow:0 0 5px rgb(0 0 0 / 15%);
+	height:100px;
+}
+
